@@ -3,7 +3,7 @@ import requests
 import data.urls
 
 
-@allure.title("Получение списка заказов")
+@allure.feature("Получение списка заказов")
 class TestGetOrders:
 
     @allure.title("Проверяем, что возвращается список заказов")

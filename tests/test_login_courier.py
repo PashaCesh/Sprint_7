@@ -4,7 +4,7 @@ import pytest
 import data.urls
 
 
-@allure.title("Авторизация курьером")
+@allure.feature("Авторизация курьером")
 class TestLoginCourier:
 
     @allure.title("Проверяем, что курьером можно залогиниться")

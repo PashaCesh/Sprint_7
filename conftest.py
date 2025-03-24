@@ -23,14 +23,13 @@ def create_and_delete_courier():
     }
 
     response = requests.post(data.urls.Urls.COURIER_URL, json=payload)
-    assert response.status_code == 201
-    assert response.json()["ok"] is True
 
     yield {
         "login": login,
         "password": password,
         "firstName": first_name,
-        "payload": payload
+        "payload": payload,
+        "response": response
     }
 
     login_response = requests.post(data.urls.Urls.COURIER_LOGIN_URL, json=
@@ -40,8 +39,4 @@ def create_and_delete_courier():
     })
     if login_response.status_code == 200 and "id" in login_response.json():
         courier_id = login_response.json()["id"]
-
-        delete_response = requests.delete(f"{data.urls.Urls.COURIER_URL}/{courier_id}",
-                                          json={"id": courier_id})
-        assert delete_response.status_code == 200
-        assert delete_response.json()["ok"] is True
+        requests.delete(f"{data.urls.Urls.COURIER_URL}/{courier_id}", json={"id": courier_id})

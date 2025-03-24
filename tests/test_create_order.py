@@ -4,7 +4,7 @@ import requests
 import data.urls
 
 
-@allure.title("Создание заказа")
+@allure.feature("Создание заказа")
 class TestCreateOrder:
 
     @allure.title("Проверяем, что заказ создаётся с разными цветами или без цвета")

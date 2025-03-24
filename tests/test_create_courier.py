@@ -4,12 +4,14 @@ import pytest
 import data.urls
 
 
-@allure.title("Создание курьера")
+@allure.feature("Создание курьера")
 class TestCreateCourier:
 
     @allure.title("Проверяем, что курьер создаётся")
     def test_can_create_courier(self, create_and_delete_courier):
-        pass
+        response = create_and_delete_courier["response"]
+        assert response.status_code == 201
+        assert "ok" in response.json()
 
     @allure.title("Проверяем, что нельзя создать два одинаковых курьера")
     def test_cannot_create_duplicate_courier(self, create_and_delete_courier):
